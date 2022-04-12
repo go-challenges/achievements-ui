@@ -1,35 +1,46 @@
 import axios from "axios";
 
 class Client {
-    endpoint: string;
-    baseUrl: string
+  endpoint: string;
+  baseUrl: string;
 
-    constructor() {
-        this.baseUrl = 'http://localhost:3000';
-        this.endpoint = `${this.baseUrl}/challenges`;
-    }
+  constructor() {
+    this.baseUrl = "http://localhost:3000";
+    this.endpoint = `${this.baseUrl}/challenges`;
+  }
 
-    async getAllData() { // TODO: add type for challenge
-        const res = await axios.get(this.endpoint);
-  
-        return res.data
-    }
+  async getAllData() {
+    // TODO: add type for challenge
+    const res = await axios.get(this.endpoint);
 
-    async addChallenge(name: string, description: string) {
-        const res = await axios.post(this.endpoint, {name: name, description: description});
+    return res.data;
+  }
 
-        if(res.status == 201) {
-            return res.data;
-        } // TODO: throw exception
-    }
+  async addChallenge(
+    name: string,
+    description: string,
+    type: string,
+    properties: object
+  ) {
+    const res = await axios.post(this.endpoint, {
+      name: name,
+      description: description,
+      type,
+      properties,
+    });
 
-    async deleteChallenge(index: number) {
-        const res = await axios.delete(`${this.endpoint}/${index}`);
+    if (res.status == 201) {
+      return res.data;
+    } // TODO: throw exception
+  }
 
-        if(res.status == 204) {
-            this.getAllData();
-        }// TODO: throw exception
-    }
+  async deleteChallenge(index: number) {
+    const res = await axios.delete(`${this.endpoint}/${index}`);
+
+    if (res.status == 204) {
+      this.getAllData();
+    } // TODO: throw exception
+  }
 }
 
 const client = new Client();
