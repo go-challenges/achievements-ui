@@ -5,10 +5,14 @@ export default {
     return {
       name: "",
       description: "",
-      properties: {},
+      properties: {
+        measure: "days",
+        amount: 0,
+      },
       type: "number",
       typeForm: "number",
       options: ["number", "time"],
+      measurements: ["days", "hours", "reps"],
     };
   },
   methods: {
@@ -81,6 +85,12 @@ export default {
       <small id="amountHelp" class="form-text text-muted"
         >Enter the amount of repetitions.</small
       >
+      <vue-select
+        :options="measurements"
+        v-model="properties.measure"
+        :value="properties.measure"
+        label="measure"
+      />
     </div>
     <div v-if="typeForm === 'time'">
       <label for="time">Time to achieve</label>
