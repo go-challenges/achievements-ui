@@ -36,7 +36,7 @@ export default {
 <template>
   <div>
     <div class="form-group">
-      <label for="name">Name</label>
+      <label for="name">{{ $t("challenge.form.name") }}</label>
       <input
         type="text"
         class="form-control"
@@ -46,11 +46,11 @@ export default {
         v-model="name"
       />
       <small id="nameHelp" class="form-text text-muted"
-        >Enter the name of the challenge.</small
+        >{{ $t("challenge.form.name_help") }}</small
       >
     </div>
     <div class="form-group">
-      <label for="description">Description</label>
+      <label for="description">{{ $t("challenge.form.description") }}</label>
       <input
         type="text"
         class="form-control"
@@ -60,7 +60,7 @@ export default {
         v-model="description"
       />
       <small id="descriptionHelp" class="form-text text-muted"
-        >Enter the description of the challenge.</small
+        >{{ $t("challenge.form.description_label") }}</small
       >
     </div>
     <div>
@@ -73,7 +73,7 @@ export default {
       />
     </div>
     <div v-if="typeForm === 'number'">
-      <label for="amount">Amount to achieve</label>
+      <label for="amount">{{ $t("challenge.form.amount") }}</label>
       <input
         type="text"
         class="form-control"
@@ -83,7 +83,7 @@ export default {
         v-model="properties.amount"
       />
       <small id="amountHelp" class="form-text text-muted"
-        >Enter the amount of repetitions.</small
+        >{{ $t("challenge.form.amount_label") }}</small
       >
       <vue-select
         :options="measurements"
@@ -93,7 +93,7 @@ export default {
       />
     </div>
     <div v-if="typeForm === 'time'">
-      <label for="time">Time to achieve</label>
+      <label for="time">{{ $t("challenge.form.time") }}</label>
       <input
         type="text"
         class="form-control"
@@ -103,9 +103,9 @@ export default {
         v-model="properties.time"
       />
       <small id="timeHelp" class="form-text text-muted"
-        >Enter the time required to get for the channenge.</small
+        >{{ $t("challenge.form.time_label") }}</small
       >
     </div>
-    <button class="btn btn-primary" @click="submitChallengeForm">Create</button>
+    <button class="btn btn-primary" @click="submitChallengeForm">{{ $t("challenge.form.create") }}</button>
   </div>
 </template>
