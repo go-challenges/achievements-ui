@@ -8,11 +8,13 @@ export default {
       properties: {
         measure: "days",
         amount: 0,
+        duration: "month",
       },
       type: "number",
       typeForm: "number",
       options: ["number", "time"],
       measurements: ["days", "hours", "reps"],
+      durations: ["day", "week", "month", "year"],
     };
   },
   methods: {
@@ -90,6 +92,15 @@ export default {
         v-model="properties.measure"
         :value="properties.measure"
         label="measure"
+      />
+      <small id="durationHelp" class="form-text text-muted"
+        >{{ $t("challenge.form.duration_label") }}</small
+      >
+      <vue-select
+        :options="durations"
+        v-model="properties.duration"
+        :value="properties.duration"
+        label="duration"
       />
     </div>
     <div v-if="typeForm === 'time'">
